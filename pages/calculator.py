@@ -4,10 +4,12 @@ from selenium.webdriver.remote.webelement import WebElement
 
 
 class Display(WebElement):
+    """Display element"""
     display = (By.ID, 'display')
 
 
 class Digits(WebElement):
+    """Digits block"""
     zero = (By.XPATH, './/li[text()="0"]')
     one = (By.XPATH, './/li[text()="1"]')
     two = (By.XPATH, './/li[text()="2"]')
@@ -22,6 +24,7 @@ class Digits(WebElement):
 
 
 class Operations(WebElement):
+    """Operations block"""
     clear_all = (By.XPATH, './/li[text()="AC"]')
     clear = (By.XPATH, './/li[text()="C"]')
     addition = (By.XPATH, './/li[text()="+"]')
@@ -31,7 +34,16 @@ class Operations(WebElement):
     equality = (By.XPATH, './/li[text()="="]')
 
 
-class Calculator():
+class Calculator(object):
+    """
+    Calculator page object.
+
+    Chars to buttons is used to input more than one char numbers.
+    Each operation could apply any number of operands,
+    tests are designed to use 2 only though.
+    Each operation includes clear before input.
+    Result function process 3 possible cases.
+    """
     def __init__(self):
         self.driver = webdriver.Chrome()
         self.driver.get('http://qa-test.klika-tech.com/')
@@ -52,6 +64,7 @@ class Calculator():
 
     def input_number(self, value):
         for char in str(value):
+            self.driver.implicitly_wait(5)
             self.chars_to_buttons[char].click()
 
     def clear(self):
