@@ -1,8 +1,12 @@
 import random as r
 
+import allure
 import pytest
 
 
+@allure.feature('Division')
+@allure.story('Division of positive integer')
+@allure.title('Divide {a} by {b}')
 @pytest.mark.parametrize('a, b', [
     (r.randint(0, 9), r.randint(1, 9)),
     (r.randint(0, 9), r.randint(-9, -1)),
@@ -18,6 +22,9 @@ def test_divide_int_positive(calc_page, a, b):
     )
 
 
+@allure.feature('Division')
+@allure.story('Division of negative integer')
+@allure.title('Divide {a} by {b}')
 @pytest.mark.parametrize('a, b', [
     (r.randint(-9, -1), r.randint(-9, -1)),
     (r.randint(-9, -1), round(r.uniform(0.001, 9.999), 3)),
@@ -32,6 +39,9 @@ def test_divide_int_negative(calc_page, a, b):
     )
 
 
+@allure.feature('Division')
+@allure.story('Division of positive float')
+@allure.title('Divide {a} by {b}')
 @pytest.mark.parametrize('a, b', [
     (round(r.uniform(0.001, 9.999), 3), round(r.uniform(0.001, 9.999), 3)),
     (round(r.uniform(0.001, 9.999), 3), round(r.uniform(-9.999, -0.001), 3))
@@ -45,6 +55,9 @@ def test_divide_float_positive(calc_page, a, b):
     )
 
 
+@allure.feature('Division')
+@allure.story('Division of negative float')
+@allure.title('Divide {a} by {b}')
 @pytest.mark.parametrize('a, b', [
     (round(r.uniform(-9.999, -0.001), 3), round(r.uniform(0.001, 9.999), 3))
 ])
@@ -57,6 +70,9 @@ def test_divide_float_negative(calc_page, a, b):
     )
 
 
+@allure.feature('Division')
+@allure.story('Division by zero')
+@allure.title('Divide {a} by {b}')
 @pytest.mark.parametrize('a, b', [
     (r.randint(0, 9), 0),
     (r.randint(-9, -1), 0),
