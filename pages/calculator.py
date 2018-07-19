@@ -42,7 +42,7 @@ class Calculator(object):
     Each operation could apply any number of operands,
     tests are designed to use 2 only though.
     Each operation includes clear before input.
-    Result function process 3 possible cases.
+    Result function process 3 possible cases, but with variation for infinity.
     """
     def __init__(self):
         self.driver = webdriver.Chrome()
@@ -78,7 +78,7 @@ class Calculator(object):
         result = self.driver.find_element(*Display.display).text
         if '.' in result:
             return round(float(result), 3)
-        elif result == 'Infinity':
+        elif result == 'Infinity' or result == '-Infinity':
             return result
         else:
             return int(result)
