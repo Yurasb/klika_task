@@ -60,42 +60,55 @@ class Calculator():
     def clear_all(self):
         self.driver.find_element(*Operations.clear_all).click()
 
+    def result(self):
+        self.driver.implicitly_wait(5)
+        result = self.driver.find_element(*Display.display).text
+        if '.' in result:
+            return round(float(result), 3)
+        elif result == 'Infinity':
+            return result
+        else:
+            return int(result)
+
     def add(self, *args):
+        self.clear_all()
+        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.addition).click()
         self.input_number(args[-1])
         self.driver.find_element(*Operations.equality).click()
+        return self.result()
 
     def subtract(self, *args):
+        self.clear_all()
+        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.subtraction).click()
         self.input_number(args[-1])
         self.driver.find_element(*Operations.equality).click()
+        return self.result()
 
     def multiply(self, *args):
+        self.clear_all()
+        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.multiplication).click()
         self.input_number(args[-1])
         self.driver.find_element(*Operations.equality).click()
+        return self.result()
 
     def divide(self, *args):
+        self.clear_all()
+        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.division).click()
         self.input_number(args[-1])
         self.driver.find_element(*Operations.equality).click()
-
-    def is_result_match(self, expected):
-        result = self.driver.find_element(*Display.display).text
-        if '.' in result:
-            return float(result) == expected
-        elif result == 'Infinity':
-            return result == expected
-        else:
-            return int(result) == expected
+        return self.result()
 
     def __repr__(self):
         return self.__class__.__name__
