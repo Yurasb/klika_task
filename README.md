@@ -13,7 +13,9 @@ Follow steps below to run locally.
 You need `Allure` to generate fancy report and `tox` to build virtual environment.
 
 >sudo apt-add-repository ppa:qameta/allure
+
 >sudo apt-get update 
+
 >sudo apt-get install allure
 
 >sudo pip install tox
