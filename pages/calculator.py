@@ -47,6 +47,7 @@ class Calculator(object):
     def __init__(self):
         self.driver = webdriver.Chrome()
         self.driver.get('http://qa-test.klika-tech.com/')
+        self.driver.implicitly_wait(5)
         self.chars_to_buttons = {
             '0': self.driver.find_element(*Digits.zero),
             '1': self.driver.find_element(*Digits.one),
@@ -64,7 +65,6 @@ class Calculator(object):
 
     def input_number(self, value):
         for char in str(value):
-            self.driver.implicitly_wait(5)
             self.chars_to_buttons[char].click()
 
     def clear(self):
@@ -74,7 +74,6 @@ class Calculator(object):
         self.driver.find_element(*Operations.clear_all).click()
 
     def result(self):
-        self.driver.implicitly_wait(5)
         result = self.driver.find_element(*Display.display).text
         if '.' in result:
             return round(float(result), 3)
@@ -85,7 +84,6 @@ class Calculator(object):
 
     def add(self, *args):
         self.clear_all()
-        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.addition).click()
@@ -95,7 +93,6 @@ class Calculator(object):
 
     def subtract(self, *args):
         self.clear_all()
-        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.subtraction).click()
@@ -105,7 +102,6 @@ class Calculator(object):
 
     def multiply(self, *args):
         self.clear_all()
-        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.multiplication).click()
@@ -115,7 +111,6 @@ class Calculator(object):
 
     def divide(self, *args):
         self.clear_all()
-        self.driver.implicitly_wait(5)
         for arg in args[:-1]:
             self.input_number(arg)
             self.driver.find_element(*Operations.division).click()
