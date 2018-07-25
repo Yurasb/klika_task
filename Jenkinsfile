@@ -1,6 +1,6 @@
 node {
     checkout scm
-    docker.image('python:3.6-alpine').inside {
+    docker.image('joyzoursky/python-chromedriver:3.6-xvfb').inside {
         stage('Build') {
             sh 'python setup.py install'
         }
