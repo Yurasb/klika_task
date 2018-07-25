@@ -4,8 +4,12 @@ node {
         stage('Build') {
             sh 'python setup.py install'
         }
-        stage('Test') {
-            sh 'py.test ./tests/ --verbose --junit-xml test-reports/results.xml'
+        try {
+            stage('Test') {
+                sh 'py.test ./tests/ --verbose --junit-xml test-reports/results.xml'
+            }
+        } finally {
+            junit 'test-reports/results.xml'
         }
     }
 }
