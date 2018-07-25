@@ -9,8 +9,10 @@ setup(
     author='Yury Kuptsou',
     author_email='yurasb@tut.by',
     description='Test task for KlikaTech',
-    install_requires=['pytest',
-                      'selenium',
-                      'allure-pytest',
-                      'allure-python-commons']
+    install_requires=[
+        'pytest',
+        'selenium',
+        'allure-pytest',
+        'allure-python-commons'
+    ]
 )
