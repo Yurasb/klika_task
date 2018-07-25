@@ -18,12 +18,11 @@ pipeline {
                 }
             }
             steps {
-                sh 'py.test ./tests/ --junitxml=./test_report.xml --alluredir=./test_report/'
+                sh 'py.test ./tests/ --verbose --junit-xml test-reports/results.xml'
             }
             post {
                 always {
-                    junit './test_report.xml'
-                    allure './test_report/'
+                    junit 'test-reports/results.xml'
                 }
             }
         }
