@@ -5,6 +5,7 @@ from selenium.webdriver.remote.webelement import WebElement
 
 options = Options()
 options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 
 
 class Display(WebElement):
