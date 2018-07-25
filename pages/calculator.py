@@ -45,7 +45,7 @@ class Calculator(object):
     Result function process 3 possible cases, but with variation for infinity.
     """
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(chrome_options='--headless')
         self.driver.get('http://qa-test.klika-tech.com/')
         self.driver.implicitly_wait(5)
         self.chars_to_buttons = {
