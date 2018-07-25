@@ -1,6 +1,10 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
+
+options = Options()
+options.add_argument('--headless')
 
 
 class Display(WebElement):
@@ -45,7 +49,7 @@ class Calculator(object):
     Result function process 3 possible cases, but with variation for infinity.
     """
     def __init__(self):
-        self.driver = webdriver.Chrome(chrome_options='--headless')
+        self.driver = webdriver.Chrome(chrome_options=options)
         self.driver.get('http://qa-test.klika-tech.com/')
         self.driver.implicitly_wait(5)
         self.chars_to_buttons = {
