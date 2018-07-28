@@ -10,7 +10,22 @@ Chromedriver for Selenium is required for sure.
 Follow steps below to run locally.
 
 #### Preparation
-You need `Allure` to generate fancy report and `tox` to build virtual environment.
+Install chromedriver first:
+
+>wget -N http://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+
+>unzip chromedriver_linux64.zip
+
+>chmod +x chromedriver
+
+>sudo mv -f chromedriver /usr/local/share/chromedriver
+
+>sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
+>sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+
+
+You need `Allure` to generate fancy report and `tox` to build virtual environment:
 
 >sudo apt-add-repository ppa:qameta/allure
 
